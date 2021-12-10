@@ -1,18 +1,17 @@
 version: '3'
 
 services:
-  database:
-    image: postgres
-    ports:
-      - '5432:5432'
-    container_name: postgres
-    restart: always
-    volumes:
-      - postgres-disk:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: jklv1234
-      POSTGRES_DB: petshop
+ netflixpg:
+  image: postgres:alpine
+  ports:
+  - '5432:5432'
+  container_name: 'netflix'
+  restart: always
+  volumes:
+   - netflixpg-data:/var/lib/postgresql/data
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: jklv1234
 
 volumes:
-  postgres-disk:
+ netflixpg-data:
