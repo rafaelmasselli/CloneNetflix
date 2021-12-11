@@ -58,7 +58,7 @@ export class UsersService {
       where: { id },
     });
     if (!user) {
-      throw new NotFoundException('O filme nao foi encontrador');
+      throw new NotFoundException('O filme nao foi encontrado');
     }
     delete user.password;
     return user;
@@ -78,7 +78,7 @@ export class UsersService {
   // remove
 
   async remove(id: string): Promise<{ message: string }> {
-    const user = await this.database.user.delete({
+    const user = await this.database.user.findUnique({
       where: { id },
     });
 
