@@ -11,13 +11,12 @@ datasource db {
 }
 
 model User {
-  id              String   @id @default(uuid())
-  name            String?
-  email           String   @unique
-  password        String
-  confirmpassword String
-  created         DateTime @default(now())
-  updated         DateTime @updatedAt
+  id       String   @id @default(uuid())
+  name     String?
+  email    String   @unique
+  password String
+  created  DateTime @default(now())
+  updated  DateTime @updatedAt
 }
 
 model filmes {

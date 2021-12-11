@@ -20,15 +20,15 @@ export class UsersService {
     if (dado.password !== dado.confirmpassword) {
       throw new UnauthorizedException('A confirmacao de senha esta Errada');
     }
-    const user = this.database.user.findUnique({
+    const user = await this.database.user.findUnique({
       where: { email: dado.email },
     });
     if (user) {
       throw new ConflictException('Esse email ja esta cadastrado');
     }
 
-    const hash = 3;
-    const hashPassword = await bcrypt.hash(dado.password, hash);
+    const hashh = 3;
+    const hashPassword = await bcrypt.hash(dado.password, hashh);
 
     delete dado.confirmpassword;
 
@@ -38,6 +38,7 @@ export class UsersService {
         password: hashPassword,
       },
     });
+
     delete userNew.password;
     return userNew;
   }
@@ -88,6 +89,6 @@ export class UsersService {
         where: { id },
       });
     }
-    return { message: 'Usario deletador com sucesso' };
+    return { message: 'Usario deletado com sucesso' };
   }
 }

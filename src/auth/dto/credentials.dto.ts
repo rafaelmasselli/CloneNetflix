@@ -2,7 +2,6 @@ import { IsString, IsEmail, IsNotEmpty, Length } from 'class-validator';
 
 export class Credentials {
   @IsString()
-  @IsEmail()
   @IsNotEmpty()
   name: string;
 

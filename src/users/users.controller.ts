@@ -16,7 +16,7 @@ import { User } from '@prisma/client';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Post('register')
+  @Post('')
   create(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.usersService.create(createUserDto);
   }
@@ -26,12 +26,12 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get('find/:id')
+  @Get(':id')
   findOne(@Param('id') id: string): Promise<User> {
     return this.usersService.findOne(id);
   }
 
-  @Patch('update/:id')
+  @Patch(':id')
   update(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -39,7 +39,7 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @Delete('delete/:id')
+  @Delete(':id')
   remove(@Param('id') id: string): Promise<{ message: string }> {
     return this.usersService.remove(id);
   }
