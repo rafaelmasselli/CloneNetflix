@@ -46,6 +46,6 @@ export class UsersController {
   @UseGuards(AuthGuard())
   @Patch('add/:id')
   addfilmes(@AuthUser() user: User, @Param('id') id: string) {
-    return this.usersService.addFilme(user, id);
+    return this.usersService.addfilme(user, id);
   }
 }

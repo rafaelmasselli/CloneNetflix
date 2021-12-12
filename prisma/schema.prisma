@@ -17,6 +17,7 @@ model User {
   password String
   created  DateTime @default(now())
   updated  DateTime @updatedAt
+  movies   filmes[]
 }
 
 model filmes {
@@ -27,4 +28,5 @@ model filmes {
   duration String
   created  DateTime @default(now())
   updated  DateTime @updatedAt
+  usuario  User[]
 }
