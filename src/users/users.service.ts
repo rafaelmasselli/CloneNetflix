@@ -91,15 +91,14 @@ export class UsersService {
     }
     return { message: 'Usario deletado com sucesso' };
   }
-  async addfilme(user: User, id: string) {
+
+  async addfilmes(user: User, id: string) {
     const filmesZ = await this.database.filmes.findUnique({
       where: { id: id },
     });
-
     if (!filmesZ) {
       throw new NotFoundException('Filme nao encontrado');
     }
-
     const usuario = await this.database.user.update({
       where: { id: user.id },
       data: {
