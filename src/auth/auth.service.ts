@@ -17,16 +17,16 @@ export class AuthService {
       where: { email: loginD.email },
     });
     if (!usuario) {
-      throw new NotFoundException('Usuario nao encontrado');
+      throw new NotFoundException('Usuario nao cadastrado');
     }
     const Pass = await bcrypt.compare(loginD.password, usuario.password);
 
     if (Pass) {
       const payload = {
-        id: usuario.id,
+        email: loginD.email,
       };
       const token = await this.jwt.sign(payload);
-      return { token };
+      return { message: 'usuario logado com sucesso', token };
     } else {
       throw new UnauthorizedException('Login invalido');
     }

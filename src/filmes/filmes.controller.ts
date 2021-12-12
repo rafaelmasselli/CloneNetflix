@@ -23,13 +23,11 @@ export class FilmesController {
   create(@Body() createFilmeDto: CreateFilmeDto): Promise<filmes> {
     return this.filmesService.create(createFilmeDto);
   }
-
   @UseGuards(AuthGuard())
   @Get()
   findAll(): Promise<filmes[]> {
     return this.filmesService.findAll();
   }
-
   @UseGuards(AuthGuard())
   @Get(':id')
   findOne(@Param('id') id: string): Promise<filmes> {
