@@ -1,0 +1,11 @@
+.cardX {
+  width: 19rem;
+  color: black;
+  margin: 5px;
+}
+
+.container_Home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

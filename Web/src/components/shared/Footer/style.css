@@ -1,0 +1,14 @@
+.Footer {
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+}
+.Foot {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+.image {
+  width: 40px;
+  height: 45px;
+}

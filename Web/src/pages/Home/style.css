@@ -1,0 +1,31 @@
+.container_filmes_home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.margin {
+  margin: 20px;
+}
+.marginC {
+  margin: 20px;
+}
+
+.Fonte {
+  font-size: 25px;
+  display: inline-block;
+}
+.Image {
+  display: inline-block;
+}
+.Banner1 {
+  margin-top: 150px;
+}
+.Banner2 {
+  margin-top: 250px;
+}
+.Linha {
+  border: 0;
+  border-top: 2px solid #ccc;
+  margin-top: 20px;
+}

@@ -1,0 +1,16 @@
+.titulo {
+  font: italic small-caps bold 50px/30px Georgia, serif;
+  margin-top: 50px;
+  color: rgb(121, 121, 121);
+}
+.imageView {
+  display: inline-block;
+  margin: 30px;
+}
+.TextView {
+  display: inline-block;
+  margin: 30px;
+}
+.responsive {
+  flex-wrap: wrap;
+}

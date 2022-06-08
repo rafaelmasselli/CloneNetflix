@@ -1,0 +1,16 @@
+.Titulo {
+  margin-top: 25px;
+}
+.logo {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.font {
+  color: rgb(235, 0, 0);
+}
+.center {
+  text-align: center;
+}
+body {
+  background-color: black;
+}
