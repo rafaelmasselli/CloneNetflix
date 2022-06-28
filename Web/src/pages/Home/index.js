@@ -1,6 +1,5 @@
 import "./style.css";
-import Card from "./../../components/sturcture/CardHome/index";
-
+import Card from "./../../components/structure/CardHome";
 const View = () => {
   return (
     <div>
@@ -9,10 +8,9 @@ const View = () => {
           src="https://www.caviarcriativo.com/wp-content/uploads/2020/06/Significados-da-Marca-Netflix-1000x480.gif"
           width="500px"
           class="img-fluid"
-          alt="..."
+          alt="Logo Netflix"
         />
       </div>
-
       <h3>Filmes Premiado</h3>
       <div class="container_filmes_home ">
         <div className="marginC">
@@ -57,6 +55,7 @@ const View = () => {
           <img
             src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png"
             class="img-fluid"
+            alt="tv desktop"
           />
         </div>
         <div className="Linha"> </div>
@@ -66,6 +65,7 @@ const View = () => {
         <div className="Image">
           <img
             class="img-fluid"
+            alt="Netflix kids"
             src="https://occ-0-3976-185.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABUb4fcnETtielPJer_ORwZ2iUanycANl37cr81zDaXC9Fmg9c42ofxt0yxetNltG2xUMgf2Aqimz_q1Nsv-38Ng_EjIc.png?r=1b8"
           />
         </div>

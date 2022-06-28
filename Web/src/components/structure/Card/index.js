@@ -7,7 +7,7 @@ const Card = (props) => {
     <div>
       <div>
         <div class="card cardX">
-          <Link to={`/detalhes/${props.id}`}>
+          <Link to={`/detail  /${props.id}`}>
             <img
               src={props.image}
               class="card-img-top"

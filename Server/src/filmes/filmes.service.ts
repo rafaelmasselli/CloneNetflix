@@ -8,33 +8,25 @@ import { PrismaService } from 'src/prisma.service';
 export class FilmesService {
   constructor(private database: PrismaService) {}
 
-  //Post
-
   async create(dado: CreateFilmeDto): Promise<filmes> {
     const filme = await this.database.filmes.create({ data: dado });
     return filme;
   }
-
-  //ALL
 
   async findAll(): Promise<filmes[]> {
     const filmesALL = await this.database.filmes.findMany();
     return filmesALL;
   }
 
-  //findONE
-
   async findOne(id: string): Promise<filmes> {
     const filmes = await this.database.filmes.findUnique({
       where: { id },
     });
     if (!filmes) {
-      throw new NotFoundException('Filmes nao foi escontrado');
+      throw new NotFoundException('Filme nao encontrado');
     }
     return filmes;
   }
-
-  //Patch
 
   async update(id: string, updateFilmeDto: UpdateFilmeDto): Promise<filmes> {
     const filme = await this.database.filmes.update({
@@ -44,14 +36,12 @@ export class FilmesService {
     return filme;
   }
 
-  //remove
-
   async remove(id: string): Promise<{ message: string }> {
     const filmes = await this.database.filmes.findUnique({
       where: { id },
     });
     if (!filmes) {
-      throw new NotFoundException('Filmes nao foi escontrado');
+      throw new NotFoundException('O filme nao foi encontrado');
     } else {
       await this.database.filmes.delete({
         where: { id },

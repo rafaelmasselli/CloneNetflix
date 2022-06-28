@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import CardV from "./../../components/sturcture/Card/index";
+
+import { api } from "../../lib/api";
+import Card from "../../components/structure/Card";
+
 import "./style.css";
-import ContentLoader, { Facebook } from "react-content-loader";
 
 const View = () => {
   const [filmes, setFilmes] = useState([]);
-  const [montado, setmontado] = useState(false);
+  const [montado, setMontado] = useState(false);
 
   const getNetflix = async () => {
-    await axios.get("/movie/findMany").then((response) => {
+    await api.get("/movie/findMany").then((response) => {
       if (montado) {
         setFilmes(response.data);
       }
@@ -17,8 +18,9 @@ const View = () => {
   };
 
   useEffect(() => {
-    setmontado(true);
+    setMontado(true);
     getNetflix();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [montado]);
 
   return (
@@ -26,7 +28,7 @@ const View = () => {
       <h1>Filmes</h1>
       <div class="container_View">
         {filmes.map((item) => (
-          <CardV
+          <Card
             id={item.id}
             image={item.cover}
             name={item.title}
@@ -35,8 +37,6 @@ const View = () => {
           />
         ))}
       </div>
-      <br></br>
-      <br></br>
     </div>
   );
 };

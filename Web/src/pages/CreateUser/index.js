@@ -1,44 +1,35 @@
+import React from "react";
 import { useState } from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const FormCreate = () => {
+import axios from "axios";
+
+const RegisterC = () => {
   let navigate = useNavigate();
 
   const [email, setEmail] = useState("");
-  const [name, setname] = useState("");
-  const [senha, setSenha] = useState("");
-  const [passwordConfirmation, setConfirme] = useState("");
-  const [birthdate, setbirthdate] = useState("");
-  const [imageUrl, setimage] = useState("");
+  const [name, setName] = useState("");
+  const [password, setSenha] = useState("");
+  const [confirmpassword, setConfirme] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const create = {
-      name: name,
-      email: email,
-      birthdate: birthdate,
-      password: senha,
-      passwordConfirmation: passwordConfirmation,
-      imageUrl: imageUrl,
-    };
-
-    axios
-      .post("/user/create", create)
+    await axios
+      .post("user/create", { email, name, password, confirmpassword })
       .then(() => {
-        alert("Usuario Cadastrado com sucesso!");
+        alert("Usuário Cadastrado com sucesso!");
         navigate("/login");
       })
-      .catch(() => {
-        alert("Erro preecha os dados corretamente");
+      .catch((error) => {
+        const { data } = error.response;
+        console.log(data.message);
       });
   };
 
   return (
-    <div className="centralizee">
+    <div className="centralize">
       <form onSubmit={handleSubmit}>
         <h1>Cadastro</h1>
         <br></br>
@@ -59,7 +50,7 @@ const FormCreate = () => {
             type="text"
             class="form-control"
             placeholder="Password"
-            onChange={(event) => setname(event.target.value)}
+            onChange={(event) => setName(event.target.value)}
           />
           <label for="floatingPassword" className="Color">
             Nome
@@ -92,33 +83,7 @@ const FormCreate = () => {
         </div>
 
         <br></br>
-        <div class="form-floating">
-          <input
-            type="date"
-            class="form-control"
-            placeholder="Password"
-            onChange={(event) => setbirthdate(event.target.value)}
-          />
-          <label for="floatingPassword" className="Color">
-            Data de nascimento
-          </label>
-        </div>
-
-        <br></br>
-        <div class="form-floating">
-          <input
-            type="url"
-            class="form-control"
-            placeholder="Password"
-            onChange={(event) => setimage(event.target.value)}
-          />
-          <label for="floatingPassword" className="Color">
-            Imagem url
-          </label>
-        </div>
-
-        <br></br>
-        <button type="submit" class="btn btn-danger" value="create">
+        <button type="submit" class="btn btn-danger">
           Cadastrar
         </button>
       </form>
@@ -126,4 +91,4 @@ const FormCreate = () => {
   );
 };
 
-export default FormCreate;
+export default RegisterC;

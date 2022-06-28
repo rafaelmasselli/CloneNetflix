@@ -8,7 +8,7 @@ const Aba = () => {
     <div className="navbar navbar-dark bg-dark">
       <div>
         <Link to="/">
-          <img src={Logo} width="70" height="40"></img>
+          <img src={Logo} width="70" height="40" alt='Logo Netflix'></img>
         </Link>
       </div>
       <ul class="nav">
@@ -18,7 +18,7 @@ const Aba = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link font" to="/usuario">
+          <Link className="nav-link font" to="/user">
             Minha conta
           </Link>
         </li>
