@@ -61,7 +61,9 @@ $ npm install
 
 ![Criando um arquivo .env](/.github/env.png)
 
-### Agora copie e cole o exemplo do arquivo .env.exemple
+### Agora copie e cole o exemplo do arquivo .env.exemple e cole no .env
+
+### Agora inicie o docker e o prisma
 
 ```bash
 # Iniciando o banco em docker
