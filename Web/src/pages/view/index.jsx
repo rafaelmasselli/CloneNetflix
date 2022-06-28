@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth";
 
 import { api } from "../../lib/api";
 import Card from "../../components/structure/Card";
@@ -6,11 +8,18 @@ import Card from "../../components/structure/Card";
 import "./style.css";
 
 const View = () => {
+  let navigate = useNavigate();
   const [filmes, setFilmes] = useState([]);
   const [montado, setMontado] = useState(false);
+  const { user } = useContext(AuthContext);
+
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   const getNetflix = async () => {
-    await api.get("/movie/findMany").then((response) => {
+    await api.get("/filmes", config).then((response) => {
       if (montado) {
         setFilmes(response.data);
       }
@@ -22,6 +31,10 @@ const View = () => {
     getNetflix();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [montado]);
+
+  if (!user) {
+     navigate("/login");
+  }
 
   return (
     <div>

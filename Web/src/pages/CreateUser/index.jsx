@@ -1,17 +1,23 @@
-import React from "react";
-import { useState } from "react";
-import "./style.css";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth";
+
+import "./style.css";
 
 import axios from "axios";
 
 const RegisterC = () => {
+  const { user } = useContext(AuthContext);
   let navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setSenha] = useState("");
   const [confirmpassword, setConfirme] = useState("");
+
+  if (user) {
+    navigate("/");
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -1,6 +1,17 @@
-.back_error {
-  text-align: center;
+.container-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.centralizeX {
-  margin-top: 200px;
+
+.card-profile {
+  width: 18rem;
+}
+
+.card-title-text,.text-email {
+  color: black;
+}
+
+.button-profile{
+  margin:10px
 }

@@ -22,8 +22,6 @@ const Detalhes = () => {
       });
   };
 
-  console.log(id);
-
   useEffect(() => {
     setMontado(true);
     getNetflixUnique();

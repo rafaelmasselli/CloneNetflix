@@ -1,5 +1,5 @@
 import "./style.css";
-import Card from "./../../components/structure/CardHome";
+import Card from "../../components/structure/CardHome";
 const View = () => {
   return (
     <div>

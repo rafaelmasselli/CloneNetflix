@@ -1,40 +1,36 @@
-import React,{ useState } from "react";
+import React, { useState ,  useContext} from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { api } from "../../lib/api";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth";
 
-const Login = () => {
+const LoginAcesse = () => {
   let navigate = useNavigate();
+  const { Login, user } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const login = {
-      email: email,
-      password: senha,
-    };
-
-    api.post("/auth/login", login)
-      .then((response) => {
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        navigate("/filmes");
-      })
-      .catch(() => {
-        alert("Email ou senha estão incorretas");
-      });
+    try {
+      await Login(email, senha);
+    } catch (erro) {
+      alert(erro)
+    }
   };
+
+  if (user) {
+    navigate("/User");
+  }
 
   return (
     <div>
-      <h1 className="centralizeX">Login</h1>
+      <h1 className="container-login">Login</h1>
       <div>
         <form className="FundoForm" onSubmit={handleSubmit}>
-          <div className="centralize">
+          <div className="container-form">
             <div class="form-floating mb-3 fFF">
               <input
                 type="email"
@@ -56,16 +52,19 @@ const Login = () => {
               <label for="floatingPassword">Senha</label>
             </div>
           </div>
-          <br></br>
-          <button type="submit" class="btn btn-danger" value="Login">
+
+          <button
+            type="submit"
+            class="btn btn-danger button-login"
+            value="Login"
+          >
             Entrar
           </button>
         </form>
-        <br></br>
         <div>
-          <h6>
-            <b>Novo por aqui?</b>
-            <Link to="/Create "> Assine agora</Link>
+          <h6 className="text-assine">
+            <p className="left-margin">Novo por aqui? </p>
+            <Link to="/Create ">Assine agora</Link>
           </h6>
         </div>
       </div>
@@ -73,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginAcesse;
